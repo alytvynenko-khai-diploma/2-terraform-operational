@@ -16,8 +16,8 @@ module "module-influxdb" {
   # namespace = var.namespace
 }
 
-module "module-telegraph" {
-  source = "./4-module-telegraph"
+module "module-telegraf" {
+  source = "./4-module-telegraf"
 
   # namespace = var.namespace
 }
