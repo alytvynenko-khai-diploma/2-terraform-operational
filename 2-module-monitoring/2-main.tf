@@ -7,7 +7,7 @@ module "module-grafana" {
 module "module-prometheus" {
   source = "./2-module-prometheus"
 
-  # namespace = var.namespace
+  namespace = var.namespace
 }
 
 module "module-influxdb" {
