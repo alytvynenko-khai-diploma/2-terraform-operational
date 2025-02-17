@@ -10,14 +10,8 @@ module "module-prometheus" {
   namespace = var.namespace
 }
 
-module "module-influxdb" {
-  source = "./3-module-influxdb"
+module "module-influxdb-and-telegraf" {
+  source = "./3-module-influxdb-and-telegraf"
 
-  # namespace = var.namespace
-}
-
-module "module-telegraf" {
-  source = "./4-module-telegraf"
-
-  # namespace = var.namespace
+  namespace = var.namespace
 }
