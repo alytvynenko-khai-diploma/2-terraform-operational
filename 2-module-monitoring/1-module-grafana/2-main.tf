@@ -5,13 +5,20 @@ resource "helm_release" "grafana" {
   namespace  = "infrastructure"
   version    = "8.10.0"
 
-  # values = split("\n", file("${path.module}/grafana-values.yaml")) # TODO: use templatefile()
+  values = [
+    file("${path.module}/grafana-values.yaml") # TODO: use templatefile()
+  ]
 
-  # set {
-  #   name  = "service.type"
-  #   # value = "LoadBalancer" # Change to ClusterIP or NodePort if needed
-  #   value = "NodePort" # Change to ClusterIP or NodePort if needed
-  # }
+  set {
+    name  = "adminPassword"
+    value = "admin" # TODO: replace the default password by a secret value
+  }
+
+  set {
+    # TODO: adapt for deploying to Google K8S
+    name  = "service.type"
+    value = "NodePort" # Change to ClusterIP/NodePort/LoadBalancer
+  }
 
   # set {
   #   name  = "ingress.enabled"
