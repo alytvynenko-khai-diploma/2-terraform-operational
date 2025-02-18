@@ -5,7 +5,7 @@ locals {
 module "module-gitlab" {
   source = "./1-module-gitlab"
 
-  # namespace = local.infrastructure_namespace
+  namespace = local.infrastructure_namespace
 }
 
 module "module-monitoring" {
