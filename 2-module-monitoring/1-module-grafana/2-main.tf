@@ -14,11 +14,11 @@ resource "helm_release" "grafana" {
     value = "admin" # TODO: replace the default password by a secret value
   }
 
-  set {
-    # TODO: adapt for deploying to Google K8S
-    name  = "service.type"
-    value = "NodePort" # Change to ClusterIP/NodePort/LoadBalancer
-  }
+  # set {
+  #   # TODO: adapt for deploying to Google K8S
+  #   name  = "service.type"
+  #   value = "NodePort" # Change to ClusterIP/NodePort/LoadBalancer
+  # }
 
   # set {
   #   name  = "ingress.enabled"

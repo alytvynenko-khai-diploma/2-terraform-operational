@@ -13,3 +13,9 @@ module "module-monitoring" {
 
   namespace = local.infrastructure_namespace
 }
+
+module "module-networking" {
+  source = "./3-module-networking"
+
+  namespace = local.infrastructure_namespace
+}
