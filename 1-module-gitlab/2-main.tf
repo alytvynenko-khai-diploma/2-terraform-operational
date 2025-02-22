@@ -5,15 +5,45 @@ resource "helm_release" "gitlab" {
   version    = "8.8.2"
   namespace        = var.namespace
 
+  timeout = 900
+
   values = [file("${path.module}/gitlab-values.yaml")]
 
   set {
-    name = "tls.enabled"
-    value = "false"
+    name = "global.hosts.domain"
+    value = "ci.alytvynenko.net"
   }
 
   set {
-    name = "nginx-ingress.enabled" # TODO: enable for Google K8S
-    value = "false"
+    name = "global.ingress.enabled"
+    value = "true"
   }
+
+
+  # set {
+  #   name = "certmanager.install"
+  #   value = "false"
+  # }
+
+
+  # set {
+  #   name = "prometheus.install"
+  #   value = "false"
+  # }
+
+  # set {
+  #   name = "global.kas.enabled"
+  #   value = "false"
+  # }
+
+  # set {
+  #   name = "global.minio.enabled"
+  #   value = "false"
+  # }
+
+  # set {
+  #   name = "global.registry.enabled"
+  #   value = "false"
+  # }
+
 }
