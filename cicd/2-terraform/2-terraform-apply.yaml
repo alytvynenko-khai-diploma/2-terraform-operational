@@ -1,0 +1,7 @@
+terraform-apply:
+  when: manual
+  stage: terraform
+  image: hashicorp/terraform:latest
+  script:
+    - terraform init
+    - echo "terraform apply"
