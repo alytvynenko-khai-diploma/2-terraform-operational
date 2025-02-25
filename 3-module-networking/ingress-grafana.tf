@@ -1,7 +1,7 @@
 resource "kubernetes_ingress_v1" "grafana" {
 
   metadata {
-    name = "grafana"
+    name      = "grafana"
     namespace = var.namespace
   }
 

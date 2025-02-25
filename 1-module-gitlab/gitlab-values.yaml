@@ -82,7 +82,8 @@ global:
     # class:
     annotations: {}
     enabled: true
-    tls: {}
+    tls:
+      enabled: false
     #   enabled: true
     #   secretName:
     path: /
@@ -801,14 +802,14 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/globals#custom-certificate-authorities
   # configuration of certificates container & custom CA injection
-  certificates:
-    image:
-      repository: registry.gitlab.com/gitlab-org/build/cng/certificates
-      # Default tag is `global.gitlabVersion` or `master` if the former one is undefined.
-      # tag: master
-      # pullPolicy: IfNotPresent
-      # pullSecrets: []
-    customCAs: []
+  # certificates:
+  #   image:
+  #     repository: registry.gitlab.com/gitlab-org/build/cng/certificates
+  #     # Default tag is `global.gitlabVersion` or `master` if the former one is undefined.
+  #     # tag: master
+  #     # pullPolicy: IfNotPresent
+  #     # pullSecrets: []
+  #   customCAs: []
     # - secret: custom-CA
     # - secret: more-custom-CAs
     #   keys:
@@ -898,7 +899,7 @@ global:
 ## End of global
 
 upgradeCheck:
-  enabled: true
+  enabled: false
   image: {}
     # repository:
     # tag:
@@ -980,7 +981,7 @@ nginx-ingress: &nginx-ingress
         memory: 100Mi
     publishService:
       enabled: true
-    replicaCount: 2
+    replicaCount: 1
     minAvailable: 1
     scope:
       enabled: true
@@ -1045,7 +1046,7 @@ haproxy:
 ## Installation & configuration of stable/prometheus
 ## See requirements.yaml for current version
 prometheus:
-  install: true
+  install: false
   rbac:
     create: true
   alertmanager:
@@ -1316,6 +1317,7 @@ shared-secrets:
 ## See requirements.yaml for current version
 gitlab-runner:
   install: true
+  gitlabUrl: "http://gitlab.ci.alytvynenko.net" # TODO: remove
   rbac:
     create: true
   runners:

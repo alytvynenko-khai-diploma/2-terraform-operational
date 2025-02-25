@@ -3,22 +3,22 @@ terraform {
 
   required_providers {
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
       version = "2.35.1"
     }
     helm = {
-      source = "hashicorp/helm"
+      source  = "hashicorp/helm"
       version = "2.17.0"
     }
     local = {
-      source = "hashicorp/local"
+      source  = "hashicorp/local"
       version = "2.5.2"
     }
   }
 }
 
 locals {
-  kubernetes_config_path = "~/.kube/config" # TODO: set up kubernetes provider
+  kubernetes_config_path    = "~/.kube/config" # TODO: set up kubernetes provider
   kubernetes_config_context = "docker-desktop" # TODO: set up kubernetes provider
 }
 

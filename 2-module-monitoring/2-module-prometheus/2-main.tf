@@ -5,15 +5,15 @@ resource "helm_release" "prometheus" {
   version    = "27.3.1"
   namespace  = var.namespace
 
-  values     = [file("${path.module}/prometheus-values.yaml")]
+  values = [file("${path.module}/prometheus-values.yaml")]
 
   set {
-    name = "alertmanager.enabled"
+    name  = "alertmanager.enabled"
     value = "false"
   }
 
   set {
-    name = "prometheus-node-exporter.enabled"
+    name  = "prometheus-node-exporter.enabled"
     value = "false"
   }
 }

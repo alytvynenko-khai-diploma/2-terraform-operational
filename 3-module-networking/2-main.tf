@@ -9,8 +9,4 @@ resource "helm_release" "name" {
     file("${path.module}/haproxy-values.yaml") # TODO: use templatefile()
   ]
 
-  set {
-    name = "service.type"
-    value = "NodePort"
-  }
 }
