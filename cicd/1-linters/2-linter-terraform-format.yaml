@@ -1,0 +1,5 @@
+linter-terraform:
+  stage: linters
+  image: hashicorp/terraform:latest
+  script:
+    - terraform fmt -check

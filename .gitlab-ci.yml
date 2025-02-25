@@ -19,14 +19,10 @@
 variables:
   GIT_SSL_NO_VERIFY: "true"
 
-stages:          # List of stages for jobs, and their order of execution
-  - terraform-linter
+include:
+  - local: "cicd/1-linters/*.yaml"
+  - local: "cicd/2-terraform/*.yaml"
 
-terraform-linter:
-  stage: terraform-linter
-  image: hashicorp/terraform:latest
-  script:
-    - terraform fmt -check
-
-
-
+stages:
+- linters
+- terraform

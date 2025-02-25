@@ -1,0 +1,11 @@
+linter-conventional-commit:
+  stage: linters
+  image: registry.hub.docker.com/library/node:alpine
+  variables:
+    GIT_DEPTH: 1
+  before_script:
+    - apk add --no-cache git
+    - npm install --save-dev @commitlint/config-conventional @commitlint/cli
+  script:
+    - npx commitlint --config cicd/1-linters/commitlint.config.js --from ${CI_MERGE_REQUEST_DIFF_BASE_SHA} --to ${CI_COMMIT_SHA}
+
