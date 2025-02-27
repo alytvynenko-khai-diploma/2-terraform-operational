@@ -21,8 +21,8 @@ variables:
 
 include:
   - local: "cicd/1-linters/*.yaml"
-  - local: "cicd/2-terraform/*.yaml"
+  # - local: "cicd/2-terraform/*.yaml" # TODO: disabled, SCRUM-36
 
 stages:
 - linters
-- terraform
+# - terraform # TODO: disabled, SCRUM-36
