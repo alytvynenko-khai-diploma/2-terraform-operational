@@ -1,3 +1,12 @@
+locals {
+  group_variable_list = {
+    "INFLUXDB_TOKEN": "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0", # TODO: start using dynamically
+    "INFLUXDB_URL": "http://influxdb-influxdb2.infrastructure.svc.cluster.local",
+    "INFLUXDB_ORG": "influxdata",
+    "INFLUXDB_BUCKET": "default",
+  }
+}
+
 resource "gitlab_group" "devops-only" {
   name = "1-devops-only"
   path = "1-devops-only"
@@ -18,10 +27,13 @@ resource "gitlab_group" "devops-only" {
 # }
 
 resource "gitlab_group_variable" "influxdb-token" {
+  for_each = local.group_variable_list
+
+  key = each.key
+  value = each.value
+
   group = gitlab_group.devops-only.id
-  key = "INFLUXDB_TOKEN"
-  value = "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0" # TODO: replace it dynamically later
-  masked = true
+  masked = false
   hidden = false # TODO: enable it later
   environment_scope = "*"
 }
