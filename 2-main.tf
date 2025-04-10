@@ -19,3 +19,10 @@ module "module-networking" {
 
   namespace = local.infrastructure_namespace
 }
+
+# External DNS service
+module "external-namecheap" {
+  source = "./4-external-namecheap"
+
+  load_balancer_ip = "34.30.177.31"
+}
