@@ -22,7 +22,7 @@ locals {
   kubernetes_config_context = "docker-desktop" # TODO: set up kubernetes provider
 
   project_id = "chrome-lane-454119-a6"
-  region  = "europe-north2" # The cheapest region: https://cloudprice.net/gcp/regions
+  region  = "us-central1" # The cheapest region: https://cloudprice.net/gcp/regions
   zones    = ["${local.region}-a"]
   cluster_name = "gke-main"
 
