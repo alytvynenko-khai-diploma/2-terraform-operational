@@ -14,10 +14,3 @@ resource "helm_release" "grafana" {
     value = "admin" # TODO: replace the default password by a secret value
   }
 }
-
-# FIXME: enable later
-# module "grafana-configuration" {
-#   depends_on = [ helm_release.grafana ]
-#   source = "./1-grafana-configuration"
-#   namespace = var.namespace
-# }
