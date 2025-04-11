@@ -1,17 +1,17 @@
 locals {
   group_variable_list = {
-    "INFLUXDB_TOKEN": "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0", # TODO: start using dynamically
-    "INFLUXDB_URL": "http://influxdb-influxdb2.infrastructure.svc.cluster.local",
-    "INFLUXDB_ORG": "influxdata",
-    "INFLUXDB_BUCKET": "default",
+    "INFLUXDB_TOKEN" : "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0", # TODO: start using dynamically
+    "INFLUXDB_URL" : "http://influxdb-influxdb2.infrastructure.svc.cluster.local",
+    "INFLUXDB_ORG" : "influxdata",
+    "INFLUXDB_BUCKET" : "default",
   }
 }
 
 resource "gitlab_group" "devops-only" {
-  name = "1-devops-only"
-  path = "1-devops-only"
+  name                = "1-devops-only"
+  path                = "1-devops-only"
   auto_devops_enabled = false
-  visibility_level = "public" # TODO: LDAP topic SCRUM-43
+  visibility_level    = "public" # TODO: LDAP topic SCRUM-43
 
   description = "[TF MANAGED] The GitLab group created only for DevOps Engineers and DevOps purposes"
 }

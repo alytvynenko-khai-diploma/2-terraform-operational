@@ -8,12 +8,12 @@ resource "helm_release" "influxdb" {
   values = [file("${path.module}/influxdb-values.yaml")]
 
   set {
-    name = "adminUser.password"
+    name  = "adminUser.password"
     value = "admin-initial-password" # TODO: replace the password
   }
 
   set {
-    name = "adminUser.token"
+    name  = "adminUser.token"
     value = "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0" # TODO: replace the token by a senvisitive secret value
   }
 }
