@@ -7,9 +7,10 @@ terraform {
   }
 }
 provider "namecheap" {
-  user_name = "" # FIXME: this secret should be secured
-  api_user = "" # FIXME: this secret should be secured
-  api_key = "" # FIXME: this secret should be secured
-  client_ip = "" # FIXME: this secret should be secured
+  user_name = var.secret_namecheap_api_user
+  api_user = var.secret_namecheap_api_user
+  api_key = var.secret_namecheap_api_key
+  client_ip = var.secret_namecheap_client_ip
+
   use_sandbox = false
 }
