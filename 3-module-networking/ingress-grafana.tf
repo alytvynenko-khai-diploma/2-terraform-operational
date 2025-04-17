@@ -14,7 +14,7 @@ resource "kubernetes_ingress_v1" "grafana" {
           path = "/"
           backend {
             service {
-              name = "grafana"
+              name = "kube-prometheus-stack-grafana"
               port {
                 # name = "http"
                 number = 80
