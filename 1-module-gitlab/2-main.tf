@@ -4,12 +4,18 @@ resource "helm_release" "gitlab" {
   chart      = "gitlab"
   version    = "8.8.2"
   namespace  = var.namespace
+  timeout = 1000
 
   values = [file("${path.module}/gitlab-values.yaml")]
 
   set {
     name  = "global.hosts.domain"
     value = "ci.alytvynenko.net"
+  }
+
+  set {
+    name  = "global.hosts.https"
+    value = "false"
   }
 }
 
