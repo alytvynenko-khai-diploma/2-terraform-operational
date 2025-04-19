@@ -5,13 +5,13 @@
 # }
 
 module "module-prometheus" {
-  source = "./2-module-prometheus"
+  source = "./1-module-prometheus"
 
   namespace = var.namespace
 }
 
 # module "module-influxdb-and-telegraf" {
-#   source = "./3-module-influxdb-and-telegraf"
+#   source = "./2-module-influxdb-and-telegraf"
 
 #   namespace = var.namespace
 # }
