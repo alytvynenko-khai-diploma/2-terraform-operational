@@ -10,6 +10,7 @@ module "module-prometheus" {
   namespace = var.namespace
 }
 
+# FIXME: remove or leave???
 # module "module-influxdb-and-telegraf" {
 #   source = "./2-module-influxdb-and-telegraf"
 
