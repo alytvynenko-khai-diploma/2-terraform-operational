@@ -1,26 +1,4 @@
-terraform {
-  required_version = ">= 1.10.5"
-
-  required_providers {
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "2.35.1"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "2.17.0"
-    }
-    local = {
-      source  = "hashicorp/local"
-      version = "2.5.2"
-    }
-  }
-}
-
 locals {
-  kubernetes_config_path    = "~/.kube/config" # TODO: set up kubernetes provider
-  kubernetes_config_context = "docker-desktop" # TODO: set up kubernetes provider
-
   project_id   = "chrome-lane-454119-a6"
   region       = "us-central1" # The cheapest region: https://cloudprice.net/gcp/regions
   zones        = ["${local.region}-a"]
@@ -64,18 +42,3 @@ provider "helm" {
     cluster_ca_certificate = local.data_cluster_ca_certificate
   }
 }
-
-# ============================
-#        Local testing
-# ============================
-# provider "kubernetes" {
-#   config_path    = local.kubernetes_config_path
-#   config_context = local.kubernetes_config_context
-# }
-
-# provider "helm" {
-#   kubernetes {
-#     config_path    = local.kubernetes_config_path
-#     config_context = local.kubernetes_config_context
-#   }
-# }
