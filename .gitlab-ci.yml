@@ -19,10 +19,28 @@
 variables:
   GIT_SSL_NO_VERIFY: "true"
 
-include:
-  - local: "cicd/1-linters/*.yaml"
-  # - local: "cicd/2-terraform/*.yaml" # TODO: disabled, SCRUM-36
+# include:
+#   - local: "cicd/1-linters/*.yaml"
+#   # - local: "cicd/2-terraform/*.yaml" # TODO: disabled, SCRUM-36
+
+# stages:
+# - linters
+# - terraform # TODO: disabled, SCRUM-36
 
 stages:
-- linters
-# - terraform # TODO: disabled, SCRUM-36
+- deploy
+
+deploy:
+  stage: deploy
+  variables:
+    # KUBECONFIG: "/config"
+    KUBE_CONTEXT: 1-general/2-terraform-operational:cicd-deployment
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  script:
+    # - echo "$KUBE_CONFIG" > /config
+    - kubectl config get-contexts
+    - kubectl config use-context 1-general/2-terraform-operational:cicd-deployment
+    - kubectl get pods
+    - kubectl get node -o wide

@@ -1,0 +1,9 @@
+ci_access:
+  projects:
+    - id: "1-general/2-terraform-operational"
+
+user_access:
+  access_as:
+    agent: {} # for free
+  projects:
+    - id: "1-general/2-terraform-operational"

@@ -10,6 +10,6 @@ terraform {
 provider "gitlab" {
   # token = "" # TODO: add OAuth2 Token, Project, Group, Personal Access Token or CI Job Token
   base_url = "http://gitlab.ci.alytvynenko.net/api/v4/"
-  token    = "glpat-3hx3Ay-PsRgzpDE1jdXm" # TODO: manually generate and place the token
+  token    = "glpat-brK9k3tn2vf_UmMmxyV4" # TODO: manually generate and place the token
   insecure = true                         # FIXME: remove
 }
