@@ -25,7 +25,7 @@ module "module-networking" {
 # module "external-namecheap" {
 #   source = "./4-external-namecheap"
 
-#   load_balancer_ip = "34.46.38.218" # TODO: implement workaround to retrieve the value automatically
+#   load_balancer_ip = "34.56.202.25" # TODO: implement workaround to retrieve the value automatically
 
 #   secret_namecheap_api_user  = var.secret_namecheap_api_user
 #   secret_namecheap_api_key   = var.secret_namecheap_api_key

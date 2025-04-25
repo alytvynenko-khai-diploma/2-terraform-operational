@@ -4,7 +4,7 @@ resource "helm_release" "gitlab" {
   chart      = "gitlab"
   version    = "8.8.2"
   namespace  = var.namespace
-  timeout = 1000
+  timeout    = 1000
 
   values = [file("${path.module}/gitlab-values.yaml")]
 
@@ -19,9 +19,8 @@ resource "helm_release" "gitlab" {
   }
 }
 
-# FIXME: enable later
-# Should be deployed after helm_release and setting API token
-# module "gitlab-configuration" {
-#   source = "./1-gitlab-configuration"
-#   namespace = var.namespace
-# }
+module "config-gitlab" {
+  source                       = "./5-config-gitlab"
+  namespace                    = var.namespace
+  var_for_delcaring_dependency = helm_release.gitlab.id
+}

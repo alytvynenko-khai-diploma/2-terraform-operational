@@ -4,10 +4,6 @@ locals {
     "2-terraform-operational",
     "microservices-demo",
   ]
-
-  no_avatars = [
-    "K8S-connection",
-  ]
 }
 
 # Repos with set avatars
