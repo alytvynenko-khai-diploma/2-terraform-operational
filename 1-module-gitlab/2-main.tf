@@ -17,6 +17,16 @@ resource "helm_release" "gitlab" {
     name  = "global.hosts.https"
     value = "false"
   }
+
+  set {
+    name  = "nginx-ingress.enabled"
+    value = "false" # Disabled, custom haproxy used instead
+  }
+
+  set {
+    name  = "global.ingress.enabled"
+    value = "false" # Disabled, custom haproxy used instead
+  }
 }
 
 module "config-gitlab" {

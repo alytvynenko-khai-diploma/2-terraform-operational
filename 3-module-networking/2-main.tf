@@ -1,5 +1,5 @@
-resource "helm_release" "name" {
-  count = 0 # TODO: remove, gitlab-nginx used instead
+resource "helm_release" "haproxy" {
+  # count = 0 # TODO: remove, gitlab-nginx used instead
 
   name       = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
@@ -10,5 +10,4 @@ resource "helm_release" "name" {
   values = [
     file("${path.module}/haproxy-values.yaml") # TODO: use templatefile()
   ]
-
 }
