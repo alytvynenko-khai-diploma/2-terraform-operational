@@ -2,7 +2,7 @@
 //    Configuration section
 // ============================
 # FIXME: disabled because nothing is used
-# module "config-grafana" {
-#   source = "./6-config-grafana"
-#   namespace = local.infrastructure_namespace
-# }
+module "config-grafana" {
+  source = "./6-config-grafana"
+  namespace = local.infrastructure_namespace
+}
