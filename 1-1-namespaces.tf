@@ -16,6 +16,15 @@ resource "kubernetes_namespace" "application" {
   }
 }
 
+resource "kubernetes_namespace" "app-and-infra" {
+  metadata {
+    annotations = {
+      name = "app-and-infra"
+    }
+    name = "app-and-infra"
+  }
+}
+
 resource "local_file" "config-context-creation" {
   filename = "TO-EXECUTE/1-config-contexts.ps1"
 

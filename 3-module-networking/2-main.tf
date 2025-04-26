@@ -4,7 +4,7 @@ resource "helm_release" "haproxy" {
   name       = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
   chart      = "kubernetes-ingress"
-  namespace  = var.namespace
+  namespace  = "app-and-infra"
   version    = "1.44.0"
 
   values = [
