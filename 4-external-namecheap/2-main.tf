@@ -5,6 +5,9 @@ locals {
 
     # GitLab services
     "kas", "gitlab", "minio", "registry",
+
+    # Application
+    "app"
   ]
 }
 
