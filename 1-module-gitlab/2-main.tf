@@ -15,7 +15,7 @@ resource "helm_release" "gitlab" {
 
   set {
     name  = "global.hosts.https"
-    value = "false"
+    value = "false" # FIXME: SSL is disabled at the moment
   }
 
   set {
@@ -29,8 +29,8 @@ resource "helm_release" "gitlab" {
   }
 }
 
-module "config-gitlab" {
-  source                       = "./5-config-gitlab"
-  namespace                    = var.namespace
-  var_for_delcaring_dependency = helm_release.gitlab.id
-}
+# module "config-gitlab" {
+#   source                       = "./5-config-gitlab"
+#   namespace                    = var.namespace
+#   var_for_delcaring_dependency = helm_release.gitlab.id
+# }
