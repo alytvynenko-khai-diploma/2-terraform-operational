@@ -1,42 +1,35 @@
-resource "kubernetes_namespace" "infrastructure" {
-  metadata {
-    annotations = {
-      name = "infrastructure"
-    }
-    name = "infrastructure"
-  }
+locals {
+  list_of_namespaces = [
+    "infrastructure",
+    "application",
+    "app-and-infra"
+  ]
 }
 
-resource "kubernetes_namespace" "application" {
-  metadata {
-    annotations = {
-      name = "application"
-    }
-    name = "application"
-  }
-}
+resource "kubernetes_namespace" "this" {
+  for_each = toset(local.list_of_namespaces)
 
-resource "kubernetes_namespace" "app-and-infra" {
   metadata {
     annotations = {
-      name = "app-and-infra"
+      name = each.value
     }
-    name = "app-and-infra"
+    name = each.value
   }
 }
 
 resource "local_file" "config-context-creation" {
   filename = "TO-EXECUTE/1-config-contexts.ps1"
 
-  content = join("\n", [
-    # Creation commands
-    "kubectl config set-context \"1-infrastructure\" --cluster=docker-desktop --user=docker-desktop --namespace=infrastructure",
-    "kubectl config set-context \"2-application\" --cluster=docker-desktop --user=docker-desktop --namespace=application",
-
-
-    # Usage commands
-    "\n", # New line
-    "kubectl config use-context \"1-infrastructure\"",
-    "kubectl config use-context \"2-application\"",
-  ])
+  # content = join("\n", [
+  content = <<EOT
+# 1. Create config contexts
+%{ for idx, namespace in local.list_of_namespaces }
+kubectl config set-context "${idx}-${namespace}" --cluster=docker-desktop --user=docker-desktop --namespace=${namespace}
+%{ endfor }
+# 2. Use created contexts
+%{ for idx, namespace in local.list_of_namespaces }
+kubectl config use-context "${idx}-${namespace}"
+%{ endfor }
+EOT
+  # ])
 }

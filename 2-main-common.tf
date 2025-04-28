@@ -1,5 +1,5 @@
 locals {
-  infrastructure_namespace = kubernetes_namespace.infrastructure.metadata[0].name
+  infrastructure_namespace = kubernetes_namespace.this["infrastructure"].metadata[0].name
 }
 
 module "module-gitlab" {
