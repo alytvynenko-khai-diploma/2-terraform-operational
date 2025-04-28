@@ -1,4 +1,0 @@
-
-1. GitLab runner DNS problem
-GitLab runner and other pods need local DNS resolution for GitLab webhorse.
-It is needed to manually add a record to coredns to resolve own domain to the load balancer (svc) IP.
