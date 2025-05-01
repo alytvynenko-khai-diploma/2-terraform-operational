@@ -1,4 +1,6 @@
 .$architecture.drawio.bkp
+.helm
+account.json
 
 # Local .terraform directories
 .terraform.lock.hcl

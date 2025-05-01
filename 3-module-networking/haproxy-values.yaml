@@ -325,7 +325,8 @@ controller:
 
   ## Additional command line arguments to pass to Controller
   ## ref: https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-  extraArgs: []
+  extraArgs:
+    - --configmap-tcp-services=app-and-infra/haproxy-tcp-ports
   #  - --namespace-whitelist=default
   #  - --namespace-whitelist=namespace1
   #  - --namespace-blacklist=namespace2
@@ -380,7 +381,8 @@ controller:
   service:
     enabled: true     # set to false when controller.kind is 'DaemonSet' and controller.daemonset.useHostPorts is true
 
-    type: NodePort    # can be 'ClusterIP', 'NodePort' or 'LoadBalancer'
+    # type: NodePort    # can be 'ClusterIP', 'NodePort' or 'LoadBalancer'
+    type: LoadBalancer    # can be 'ClusterIP', 'NodePort' or 'LoadBalancer'
 
     ## Service annotations
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
@@ -418,9 +420,9 @@ controller:
     enablePorts:
       http: true
       https: true
-      quic: true
-      stat: true
-      prometheus: true
+      quic: false
+      stat: false
+      prometheus: false
 
     ## Target port mappings for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
@@ -434,7 +436,10 @@ controller:
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-    tcpPorts: []
+    tcpPorts:
+     - name: ssh
+       port: 22
+       targetPort: 22
     #  - name: http-alt
     #    port: 8080
     #    targetPort: http-alt
