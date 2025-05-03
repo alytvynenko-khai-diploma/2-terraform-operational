@@ -28,9 +28,3 @@ resource "helm_release" "gitlab" {
     value = "false" # Disabled, custom haproxy used instead
   }
 }
-
-# module "config-gitlab" {
-#   source                       = "./5-config-gitlab"
-#   namespace                    = var.namespace
-#   var_for_delcaring_dependency = helm_release.gitlab.id
-# }
