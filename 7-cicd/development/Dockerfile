@@ -35,3 +35,6 @@ RUN mv ./kubectl /usr/local/bin
 RUN curl --silent \
  "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 RUN mv kustomize /usr/local/bin
+
+# INSTALL bc
+RUN apt install --yes bc
