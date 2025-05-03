@@ -9,12 +9,12 @@ locals {
       svc_port  = 80,
     },
     # FIXME: influxdb is disabled, remove or leave
-    # {
-    #   rule_name = "influxdb",
-    #   full_dns  = "influxdb.${local.dns_basename}",
-    #   svc_name  = "influxdb-influxdb2",
-    #   svc_port  = 80,
-    # },
+    {
+      rule_name = "influxdb",
+      full_dns  = "influxdb.${local.dns_basename}",
+      svc_name  = "influxdb-influxdb2",
+      svc_port  = 80,
+    },
     # GITLAB Services
     {
       rule_name = "gitlab-webservice-default",

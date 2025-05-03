@@ -17,13 +17,3 @@ resource "helm_release" "influxdb" {
     value = "L6CjnlnrSO1wmcP9biNrpp7VdrED6xQ0" # TODO: replace the token by a senvisitive secret value
   }
 }
-
-resource "helm_release" "telegraf" {
-  name       = "telegraf"
-  repository = "https://helm.influxdata.com/"
-  chart      = "telegraf"
-  version    = "1.8.55"
-  namespace  = var.namespace
-
-  values = [file("${path.module}/telegraf-values.yaml")]
-}
