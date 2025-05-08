@@ -43,6 +43,9 @@ resource "kubernetes_ingress_v1" "single_port_ingress_rules" {
   metadata {
     name      = "${each.value.rule_name}-haproxy"
     namespace = var.namespace
+    # annotations = {
+    #   "cert-manager.io/issuer" = "letsencrypt-staging"
+    # }
   }
 
   spec {
@@ -63,6 +66,11 @@ resource "kubernetes_ingress_v1" "single_port_ingress_rules" {
         }
       }
     }
+
+    # tls {
+    #   secret_name = "haproxy-cert"
+    #   hosts      = [each.value.full_dns]
+    # }
   }
 }
 
