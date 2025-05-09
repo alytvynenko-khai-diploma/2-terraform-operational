@@ -1,6 +1,6 @@
 # FIXME: enable me only for GCP deployment
 module "external-namecheap" {
-  source = "./4-external-namecheap"
+  source = "./4-module-namecheap"
 
   load_balancer_ip = "34.60.95.221" # TODO: implement workaround to retrieve the value automatically
 
