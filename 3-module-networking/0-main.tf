@@ -1,6 +1,4 @@
 resource "helm_release" "haproxy" {
-  # count = 0 # TODO: remove, gitlab-nginx used instead
-
   name       = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
   chart      = "kubernetes-ingress"

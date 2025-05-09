@@ -1,6 +1,6 @@
 locals {
-  kubernetes_config_path    = "~/.kube/config" # TODO: set up kubernetes provider
-  kubernetes_config_context = "docker-desktop" # TODO: set up kubernetes provider
+  kubernetes_config_path    = "~/.kube/config"
+  kubernetes_config_context = "docker-desktop"
 }
 
 # ============================
