@@ -1,3 +1,5 @@
+# DNS provider for all DNS records
+
 locals {
   domains = [
     # Monitoring
