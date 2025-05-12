@@ -1327,6 +1327,7 @@ gitlab-runner:
     secret: "nonempty"
     config: |
       [[runners]]
+        executor = "shell"
         [runners.kubernetes]
         image = "ubuntu:22.04"
         {{- if .Values.global.minio.enabled }}
