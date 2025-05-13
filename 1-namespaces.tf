@@ -17,6 +17,7 @@ resource "kubernetes_namespace" "this" {
   }
 }
 
+# FIXME: incorrectly generated for remote environment
 resource "local_file" "config-context-creation" {
   filename = "TO-EXECUTE/1-config-contexts.ps1"
 
