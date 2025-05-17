@@ -326,6 +326,7 @@ controller:
   ## Additional command line arguments to pass to Controller
   ## ref: https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
   extraArgs:
+    # FIXME: ssh port is not working on GKE, works locally
     - --configmap-tcp-services=app-and-infra/haproxy-tcp-ports
   #  - --namespace-whitelist=default
   #  - --namespace-whitelist=namespace1
