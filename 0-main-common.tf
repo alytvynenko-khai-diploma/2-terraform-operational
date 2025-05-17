@@ -15,7 +15,9 @@ module "module-monitoring" {
 }
 
 module "module-networking" {
+  depends_on = [ kubernetes_namespace.this ]
+
   source = "./3-module-networking"
 
-  namespace = local.infrastructure_namespace
+  namespace = local.infrastructure_namespace # TODO: change to "app-and-infra"
 }
