@@ -25,7 +25,7 @@ locals {
     {
       rule_name = "gitlab-minio",
       full_dns  = "minio.${local.dns_basename}",
-      svc_name  = "gitlab-minio",
+      svc_name  = "gitlab-minio-svc",
       svc_port  = 9000,
     },
     {
@@ -71,6 +71,10 @@ resource "kubernetes_ingress_v1" "single_port_ingress_rules" {
     #   secret_name = "haproxy-cert"
     #   hosts      = [each.value.full_dns]
     # }
+    # tls {
+    #   hosts = [ "app.${local.dns_basename}" ]
+    #   secret_name = "${each.value.rule_name}-cert"
+    # }
   }
 }
 
@@ -106,5 +110,10 @@ resource "kubernetes_ingress_v1" "gitlab-kas" {
         }
       }
     }
+
+    # tls {
+    #   secret_name = "haproxy-cert"
+    #   hosts      = [ "kas.${local.dns_basename}" ]
+    # }
   }
 }
