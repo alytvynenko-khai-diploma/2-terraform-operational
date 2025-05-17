@@ -1327,9 +1327,11 @@ gitlab-runner:
     secret: "nonempty"
     config: |
       [[runners]]
-        executor = "shell"
+        executor = "kubernetes"
         [runners.kubernetes]
-        image = "ubuntu:22.04"
+          namespace = "infrastructure"
+          image = "ubuntu:24.04"
+          privileged=true
         {{- if .Values.global.minio.enabled }}
         [runners.cache]
           Type = "s3"
