@@ -16,6 +16,12 @@ resource "kubernetes_ingress_v1" "application" {
     #   hosts = [ "app.${local.dns_basename}" ]
     #   secret_name = "frontend-cert"
     # }
+
+    # TODO: replace by cert-manager
+    # tls {
+    #   secret_name = "haproxy-cert"
+    #   hosts      = [ "app.${local.dns_basename}" ]
+    # }
     rule {
       host = "app.${local.dns_basename}"
       http {
