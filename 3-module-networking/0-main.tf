@@ -1,4 +1,6 @@
 resource "helm_release" "haproxy" {
+  # depends_on = [ kubernetes_config_map.haproxy-tcp-ports ]
+
   name       = "haproxy"
   repository = "https://haproxytech.github.io/helm-charts"
   chart      = "kubernetes-ingress"
@@ -16,6 +18,7 @@ resource "kubernetes_config_map" "haproxy-tcp-ports" {
     namespace = "app-and-infra"
   }
 
+  # FIXME: ssh port is not working on GKE, works locally
   data = {
     "22": "infrastructure/gitlab-gitlab-shell:22"
   }
